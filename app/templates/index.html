@@ -1,11 +1,56 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Главная страница
+Flask Blog
 {% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-    <h1>Основная страница сайта</h1>
-</div>
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-copy">
+                <span class="section-kicker">Личный блог на Flask</span>
+                <h1>Пишите, редактируйте и публикуйте статьи без лишнего шума.</h1>
+                <p>
+                    Чистый демонстрационный блог с PostgreSQL, Bootstrap-шаблонами и понятным CRUD для статей.
+                </p>
+                <div class="hero-actions">
+                    <a href="{{ url_for('posts.posts') }}" class="btn btn-primary btn-lg">
+                        <i class="bi bi-layout-text-window-reverse"></i>
+                        <span>Открыть статьи</span>
+                    </a>
+                    <a href="{{ url_for('posts.add_post') }}" class="btn btn-outline-dark btn-lg">
+                        <i class="bi bi-pencil-square"></i>
+                        <span>Новая статья</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img src="{{ url_for('static', filename='img/hero-workspace.png') }}" alt="Рабочее место автора блога">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content-band">
+    <div class="container">
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i class="bi bi-file-earmark-text"></i>
+                <h2>Статьи</h2>
+                <p>Список публикаций, детальная страница и сортировка по дате.</p>
+            </div>
+            <div class="feature-item">
+                <i class="bi bi-database-check"></i>
+                <h2>База данных</h2>
+                <p>SQLAlchemy-модель и PostgreSQL в Docker Compose для локальной разработки.</p>
+            </div>
+            <div class="feature-item">
+                <i class="bi bi-shield-check"></i>
+                <h2>Формы</h2>
+                <p>Создание, редактирование, удаление и базовая CSRF-защита.</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

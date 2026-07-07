@@ -5,26 +5,45 @@
 {% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-    <h1>Все статьи</h1>
-
-    {% if articles|length > 0 %}
-        {% for el in articles %}
-        <div class="card article">
-            <h5 class="card-header">
-                {{ el.title }}
-            </h5>
-            <div class="card-body">
-                <p class="card-text">{{ el.intro }}</p>
+<section class="page-section">
+    <div class="container">
+        <div class="page-heading">
+            <div>
+                <span class="section-kicker">Публикации</span>
+                <h1>Все статьи</h1>
             </div>
-            <div class="card-footer text-muted">
-            Дата: {{ el.date.date() }}
-                <a href="{{ url_for('posts.post_detail', id=el.id) }}" class="btn btn-primary">Подробнее</a>
-            </div>
+            <a href="{{ url_for('posts.add_post') }}" class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i>
+                <span>Добавить статью</span>
+            </a>
         </div>
-        {% endfor %}
-    {% else %}
-    <p>Нет статей на данный момент</p>
-    {% endif %}
-</div>
+
+        {% if articles|length > 0 %}
+            <div class="article-grid">
+                {% for el in articles %}
+                <article class="article-card">
+                    <div class="article-card-body">
+                        <time datetime="{{ el.date.date() }}">{{ el.date.strftime('%d.%m.%Y') }}</time>
+                        <h2>{{ el.title }}</h2>
+                        <p>{{ el.intro }}</p>
+                    </div>
+                    <div class="article-card-footer">
+                        <a href="{{ url_for('posts.post_detail', id=el.id) }}" class="article-link">
+                            <span>Подробнее</span>
+                            <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <i class="bi bi-journal-plus"></i>
+                <h2>Нет статей на данный момент</h2>
+                <p>Добавьте первую публикацию, чтобы она появилась в списке.</p>
+                <a href="{{ url_for('posts.add_post') }}" class="btn btn-primary">Создать статью</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}

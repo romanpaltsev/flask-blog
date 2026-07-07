@@ -5,7 +5,28 @@
 {% endblock %}
 
 {% block body %}
-<div class="container mt-5">
-    <h1>Информация о нас</h1>
-</div>
+<section class="page-section">
+    <div class="container narrow-container">
+        <span class="section-kicker">О проекте</span>
+        <h1>Небольшой блог, собранный вокруг понятного Flask-приложения.</h1>
+        <p class="lead">
+            Проект показывает базовую структуру веб-приложения: фабрику приложения, blueprints,
+            SQLAlchemy-модель, HTML-шаблоны, стили и тесты для основных сценариев.
+        </p>
+        <div class="about-list">
+            <div>
+                <strong>Backend</strong>
+                <span>Flask, SQLAlchemy, PostgreSQL и fallback на SQLite для локального запуска.</span>
+            </div>
+            <div>
+                <strong>Frontend</strong>
+                <span>Bootstrap-компоненты, адаптивная сетка и собственный CSS поверх базовой темы.</span>
+            </div>
+            <div>
+                <strong>Проверки</strong>
+                <span>Pytest покрывает публичные страницы, формы и CRUD-операции со статьями.</span>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
