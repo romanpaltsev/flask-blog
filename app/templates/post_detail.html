@@ -15,8 +15,11 @@
         </div>
         <div class="card-footer text-muted">
             Дата публикации: {{ article.date.date() }}
-            <a href="/posts/edit/{{ article.id }}" class="btn btn-success">Редактировать</a>
-            <a href="/posts/delete/{{ article.id }}" class="btn btn-danger">Удалить</a>
+            <a href="{{ url_for('posts.post_update', id=article.id) }}" class="btn btn-success">Редактировать</a>
+            <form method="post" action="{{ url_for('posts.post_delete', id=article.id) }}" class="d-inline">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+                <button type="submit" class="btn btn-danger">Удалить</button>
+            </form>
         </div>
     </div>
 </div>

@@ -6,9 +6,13 @@ from dotenv import load_dotenv
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
 
+
 class Config(object):
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '..', 'app.db')
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        'DATABASE_URL',
+        'sqlite:///' + os.path.join(basedir, '..', 'app.db'),
+    )
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-me')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     REMEMBER_COOKIE_DURATION = timedelta(days=5)
     # UPLOAD_FOLDER_ARTICLE = os.path.join(basedir, 'static/uploads/article')

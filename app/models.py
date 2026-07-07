@@ -1,6 +1,7 @@
 from app.db import db
 from datetime import datetime
 
+
 class Article(db.Model):
     __tablename__ = "articles"
     id = db.Column(db.Integer, primary_key=True)
@@ -10,4 +11,4 @@ class Article(db.Model):
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
-        return f'<Article id: {self.id}'
+        return f'<Article id: {self.id}>'

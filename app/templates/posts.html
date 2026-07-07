@@ -19,7 +19,7 @@
             </div>
             <div class="card-footer text-muted">
             Дата: {{ el.date.date() }}
-                <a href="/posts/{{ el.id }}" class="btn btn-primary">Подробнее</a>
+                <a href="{{ url_for('posts.post_detail', id=el.id) }}" class="btn btn-primary">Подробнее</a>
             </div>
         </div>
         {% endfor %}

@@ -8,6 +8,14 @@
 <div class="container mt-5">
     <h1>Редактирование статьи</h1>
     <form method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        {% if errors %}
+            <div class="alert alert-danger" role="alert">
+                {% for error in errors %}
+                    <div>{{ error }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
         <div class="form-floating">
             <input type="text" name="title" id="title" class="form-control" placeholder="Название статьи" value="{{ article.title }}"><br>
             <label for="title">Название статьи</label>

@@ -1,0 +1,22 @@
+[project]
+name = "flask-blog"
+version = "0.1.0"
+description = "Small Flask blog application with PostgreSQL storage."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "Flask==2.3.2",
+    "Flask-SQLAlchemy==3.0.5",
+    "psycopg[binary]==3.2.3",
+    "python-dotenv==1.0.0",
+    "Werkzeug>=2.3.3,<3.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest==7.4.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

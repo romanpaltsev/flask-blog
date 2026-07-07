@@ -161,3 +161,23 @@ cython_debug/
 
 # Custom
 *.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+*.sqlite3-journal
+
+# Local environment files
+.env.*
+!.env.example
+app/.env
+app/.env.*
+
+# uv local cache, if configured inside the project
+.uv-cache/
+
+# OS files
+.DS_Store
+Thumbs.db
